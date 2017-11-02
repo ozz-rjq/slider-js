@@ -1,0 +1,175 @@
+@h1FontSize: 32px;
+@h1Color: #fde;
+@buttonBg: #ffe;
+@arrowColor: #368087;
+@arrowHoverColor: #1c474c;
+
+.gallery{
+
+	width: 860px;
+	margin: 0 auto;
+	position: relative;
+
+		.slides{
+			width: 860px;
+			min-height: 560px;
+			margin: 10px auto;
+
+			border: 2px solid #ded;
+			border-radius: 50px;
+
+			position: relative;
+			overflow: hidden;
+		}
+
+		.buttons{
+			width: 300px;
+			margin: 10px auto;
+		}
+}
+
+.slide{
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	opacity: 0;
+	transition: opacity 0.75s;
+
+		h1{
+			color: @h1Color;
+			font-size: @h1FontSize;
+			text-align: center;
+			text-shadow: 1px 2px 1px;
+		}
+
+		&-active{
+			opacity: 1;
+		}
+
+		&-active-next{
+			opacity: 1;
+			animation: slide-animate-next 0.8s;
+		}
+
+		&-active-prev{
+			opacity: 1;
+			animation: slide-animate-prev 0.8s;
+		}
+
+		img{
+			border-top-right-radius: 25px;
+			border-top-left-radius: 25px;
+		}
+}
+
+.btn{
+	display: inline-block;
+	vertical-align: top;
+
+	font-size: 16px;
+	text-transform: uppercase;
+
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	border: none;
+	outline: none;
+	width: 120px;
+	height: 40px;
+
+	border: 2px solid #efe;
+	border-radius: 20px;
+
+	background-color: @buttonBg;
+
+	cursor: pointer;
+
+		&:hover{
+			background: darken(#ffe, 10%);
+		}
+
+		&:active{
+			border-color: lighten(#efe, 10%);
+		}
+
+		&-prev{
+			margin-right: 56px;
+		}
+}
+
+.arrow-block{
+	position: absolute;
+	top: 81px;
+	left: 0;
+	height: 481px;
+	width: 120px;
+
+	cursor: pointer;
+
+	transition: background-color 0.5s;
+
+		&-next{
+			left:744px;
+
+				&:hover{
+					background: linear-gradient(-90deg, #fff, rgba(255,255,255,0.01));
+				}
+		}
+
+		&-prev:hover{
+			background: linear-gradient(-90deg, rgba(255,255,255,0.01), #fff);
+		}
+
+		&:hover > .btn-absolute{
+			border-color: @arrowHoverColor;
+		}
+}
+
+.btn-absolute{
+	display: block;
+	width: 30px;
+	height: 30px;
+
+	position: absolute;
+	top: 45%;
+	left: 25px;
+
+		&-prev{
+			border-left: 10px solid @arrowColor;
+			border-bottom: 10px solid @arrowColor;
+			transform: rotate(45deg);
+		}
+
+		&-next{
+			left: 55px;
+
+			border-left: 10px solid @arrowColor;
+			border-bottom: 10px solid @arrowColor;
+			transform: rotate(-135deg);
+		}
+
+		&:hover{
+			border-color: @arrowHoverColor;
+		}
+}
+
+@keyframes slide-animate-next{
+	0%{
+		transform: translateX(100%);
+	}
+
+	100%{
+		transform: translateX(0px);
+	}
+}
+
+@keyframes slide-animate-prev{
+	0%{
+		transform: translateX(-100%);
+	}
+	}
+	100%{
+		transform: translateX(0px);
+	}
+}
