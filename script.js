@@ -61,7 +61,5 @@ function previousSlide(){
 
 setInterval(nextSlide, 2500);
 
-clearInterval()
-
 nextSlide();
 previousSlide();
